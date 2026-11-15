@@ -1,3 +1,4 @@
+
 # Research Task 1 — Findings
 
 ## Scope and approach
@@ -26,8 +27,28 @@ The numeric 0/1 classification fields offer a different perspective on the recor
 
 Among topic flags, `illuminating_topic_economy` averages **0.1221**, `illuminating_topic_health` **0.1092**, and `illuminating_topic_social_and_cultural` **0.1058**. These summarize classifications present in the supplied data; they do not establish the effectiveness or factual accuracy of the advertisements.
 
+## Candidate mentions in advertisements
+
+The `illuminating_mentions` field provides additional insight into which political figures are referenced in the advertisements. The most frequent value is an empty list (`[]`), appearing in 73,205 records, indicating that no named figure was captured in this field.
+
+Among nonempty values, `['Donald Trump']` appears in 53,182 records, followed by `['Kamala Harris']` in 31,019 records, `['President Trump']` in 14,580 records, and `['Joe Biden']` in 14,059 records.
+
+These counts represent exact combinations of names stored in the field, rather than the total number of advertisements mentioning each candidate. Different naming variations and advertisements mentioning multiple individuals would need to be standardized before calculating comprehensive candidate-level mention frequencies.
+
+This finding demonstrates the importance of cleaning and normalizing categorical text before drawing broader conclusions about political advertising narratives.
+
 ## Data quality and limitations
 
 Three fields have missing entries: `ad_delivery_stop_time` (2,159; approximately 0.87%), `bylines` (1,009; approximately 0.41%), and `estimated_audience_size` (579; approximately 0.23%). The other fields have no missing values under the scripts' missing-value rules. The `illuminating_mentions` field is a list-like string: its most common value is `[]` (73,205 records), so a blank mention list must not be confused with a missing cell. Candidate mentions can also use variants such as “Donald Trump” and “President Trump”; a robust candidate-level comparison would normalize these labels.
 
 The present analysis is descriptive. It does not infer causation, assess ad effectiveness, identify unique viewers, or calculate precise spending totals. Further work could parse spending bounds, normalize candidate mentions, and compare ad volumes by date and sponsor using documented assumptions.
+
+## Conclusion
+
+This research demonstrates how descriptive statistics can be used to explore patterns in large-scale political advertising data. The analysis identified differences in advertising activity across pages and sponsoring organizations, concentrations of ad creation dates near the 2024 presidential election, and variations in political message classifications.
+
+Using both pure Python and Pandas provided an opportunity to compare statistical approaches and examine the importance of consistent data cleaning, missing-value handling, and appropriate interpretation of different data types.
+
+The findings also highlight several limitations, particularly the use of spending and impression ranges rather than exact values. Future research could extend this analysis through temporal comparisons, normalized candidate mentions, and more detailed examination of advertising activity across sponsors and platforms.
+
+Overall, the project establishes a descriptive foundation for further analysis of political advertising datasets.
